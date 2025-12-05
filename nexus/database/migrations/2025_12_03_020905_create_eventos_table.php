@@ -13,6 +13,12 @@ return new class extends Migration {
             $table->text('descripcion')->nullable();
             $table->dateTime('fecha');
             $table->string('ubicacion')->nullable();
+
+            // OPCIONALES PERO  RECOMENDADOS
+            $table->string('categoria')->nullable(); // Para filtros
+            $table->enum('estado', ['abierto', 'cerrado', 'cancelado'])->default('abierto'); // Reportes
+            $table->integer('capacidad')->nullable();
+
             $table->timestamps();
         });
     }
