@@ -2,15 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
+
+
 // Pagina Principal
 Route::get('/', function () {
     return view('home');
 });
-
-// Mostrar formulario de registro
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
 
 // Mostrar formulario de login
 Route::get('/login', function () {
@@ -19,12 +17,17 @@ Route::get('/login', function () {
 
 
 // Mostrar formulario de registro
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])
+Route::get('/register', [RegisterController::class, 'create'])
     ->name('register');
 
 // Guardar usuario (sin validaciones por ahora)
-Route::post('/register', [app\Http\Controllers\Auth\RegisterController::class, 'store'])
+Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
 
-   Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+// Dashboard - solo accesible para usuarios autenticados
+/*Route::get('/dashboard',[DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');*/
+
+
