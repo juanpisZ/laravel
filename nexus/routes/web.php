@@ -22,7 +22,7 @@ Route::get('/login', function () {
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])
     ->name('register');
 
-// Guardar usuario (sin validaciones por ahora)
+// Guardar usuario 
 Route::post('/register', [app\Http\Controllers\Auth\RegisterController::class, 'store'])
     ->name('register.store');
 
