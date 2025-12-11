@@ -1,10 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
 
-namespace App\Http\Controllers\Auth;
-
-
-use App\Http\Controllers\Controller;
 //permite recibir los datos que envía el formulario
 use Illuminate\Http\Request;
 
@@ -22,16 +19,12 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller{
 
-    public function showLoginForm(){
-        //esto es para q cuando al usaurio entre a la opcion login, larabel automaticamente llamara a esta funcion
-        return view('auth.login');
-    }
-
+    
     public function login (Request $request){
 
         //Esto es para q el usuario ingrese los datos correctamente 
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'name' => 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -42,13 +35,12 @@ class LoginController extends Controller{
             $request->session()->regenerate();
 
             //Lo envia a la pgaina de inicio si el usuario no especifico a donde ir ejm(perfil de usuario antes de iniciar sesion)
-            return redirect()->intended(route('dashboard'));
-
+            return redirect()->intended(route('home'));
         }
 
             //Si no encuentra los datos, lanzara el mensaje de error
         throw ValidationException::withMessages(
-            ['email' => ['Correo o Contraseña es incorrectos.'],
+            ['name' => ['Datos ingresados incorrectos'],
         ]);
 
     }
@@ -61,7 +53,6 @@ class LoginController extends Controller{
         //Esto porq si alguien llega a tener el token viejo ya no sirve para entrar
         $request->session()->regenerateToken();
         //envia al usuario a la pagina de inicio
-        return redirect('/')->with('success', 'Sesión cerrada');
-
+        return redirect('/login');
     }
 }

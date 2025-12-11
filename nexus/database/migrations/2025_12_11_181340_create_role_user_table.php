@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('foros', function (Blueprint $table) {
-            $table->id();
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('role_id')->index('role_user_role_id_foreign');
+            $table->unsignedBigInteger('user_id')->index('role_user_user_id_foreign');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('foros');
+        Schema::dropIfExists('role_user');
     }
 };

@@ -1,33 +1,42 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Event;
-use App\Models\Foro;
-use App\Models\User;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Evento;
+use App\Models\Foro;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-   public function index()
+    public function index()
     {
-         $user = User::first();
+        // Usuario autenticado
+        $user = Auth::user();
 
+        // Cantidad de eventos y foros creados por el usuario
+        $eventosCreados = Evento::where('user_id', $user->id)->count();
+        $forosCreados = Foro::where('user_id', $user->id)->count();
 
-         //Contadores para el 
-         
-        // Eventos creados
-         $eventosCreados = Event::where('user_id', $user->id)->count();
+        // Últimos 5 eventos
+        $ultimosEventos = Evento::where('user_id', $user->id)
+                                ->orderBy('created_at', 'desc')
+                                ->limit(5)
+                                ->get();
 
+        // Últimos 5 foros
+        $ultimosForos = Foro::where('user_id', $user->id)
+                            ->orderBy('created_at', 'desc')
+                            ->limit(5)
+                            ->get();
 
-        // Foros creados
-         $forosCreados = Foro::where('user_id', $user->id)->count();
-
-
-        return view('dashboard.index', compact(
+        return view('layouts.app', compact(
             'user',
             'eventosCreados',
-            'forosCreados'
+            'forosCreados',
+            'ultimosEventos',
+            'ultimosForos'
         ));
     }
 }

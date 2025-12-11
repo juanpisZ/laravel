@@ -3,19 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Event extends Model
+class Evento extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'user_id',
         'titulo',
         'descripcion',
         'fecha',
-        'hora',
-        'lugar'
+        'user_id',
     ];
 
     public function user()
@@ -23,3 +18,4 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 }
+

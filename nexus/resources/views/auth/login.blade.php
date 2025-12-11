@@ -9,6 +9,15 @@
 
     <!-- Título -->
     <h1 class="text-center mb-4 fw-bold">Iniciar Sesión</h1>
+   
+    <!-- Mensajes de error -->
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error:</strong> {{ $errors->first() }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 
     <!-- Avatar -->
     <div class="text-center mb-4">
@@ -22,8 +31,8 @@
 
         <!-- Usuario -->
         <div class="mb-3">
-            <label class="form-label fw-semibold">Usuario</label>
-            <input type="text" class="form-control" name="email" required placeholder="Ingresa tu usuario">
+            <label class="form-label fw-semibold">Correo</label>
+            <input type="text" class="form-control" name="email" required placeholder="Ingresa tu correo electrónico" value="{{ old('email') }}">
         </div>
 
         <!-- Contraseña -->

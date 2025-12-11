@@ -46,6 +46,6 @@ class RegisterController extends Controller
         // Crear usuario
         User::create($data);
 
-        return "Usuario registrado correctamente";
+        return view('auth.login')->with('success', 'Registro exitoso. Por favor, inicia sesión.');
     }
 }
