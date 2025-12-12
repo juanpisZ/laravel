@@ -31,7 +31,7 @@ class DashboardController extends Controller
                             ->limit(5)
                             ->get();
 
-        return view('layouts.app', compact(
+        return view('dashboard', compact(
             'user',
             'eventosCreados',
             'forosCreados',

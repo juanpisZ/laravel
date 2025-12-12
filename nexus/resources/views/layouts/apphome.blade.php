@@ -16,13 +16,15 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo.png') }}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/nexus.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">    
+
+   <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
 </head>
 
 <body class="bg-light">
 
     {{-- HEADER --}}
-    <header class="bg-dark text-white py-3 shadow-sm">
+    <header class=" text-white py-3 shadow-sm">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 
             <div class="d-flex align-items-center gap-3 ">
@@ -44,7 +46,7 @@
     </main>
 
     {{-- FOOTER --}}
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class=" text-white py-4 mt-5">
         <div class="container text-center d-flex flex-column gap-3">
 
             <p class="mb-0">© 2025 Nexus. Todos los derechos reservados.</p>

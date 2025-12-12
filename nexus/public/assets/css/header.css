@@ -1,0 +1,38 @@
+ /* HEADER */
+    header {
+        height: 60px;
+        background: #1e1e2d;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+   
+/* Media query para móviles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* apila los elementos verticalmente */
+        align-items: flex-start;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    header .header-icons {
+        margin-top: 10px;
+    }
+
+    header .logo h4 {
+        font-size: 18px; /* ajusta tamaño del texto */
+    }
+
+    #sidebarToggle {
+        font-size: 20px; /* botón más pequeño en móvil */
+    }
+}
